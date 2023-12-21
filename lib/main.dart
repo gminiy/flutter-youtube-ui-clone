@@ -28,13 +28,16 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          const SliverAppBar(
+           SliverAppBar(
             snap: true,
             floating: true,
             expandedHeight: 20.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text('SliverAppBar'),
-              background: FlutterLogo(),
+            backgroundColor: Colors.black,
+            centerTitle: false,
+            title: Row(
+              children: [
+                Image.asset('asset/youtube_logo.jpeg', width: 90,)
+              ],
             ),
           ),
           SliverList(
