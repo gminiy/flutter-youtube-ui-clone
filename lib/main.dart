@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 /// Flutter code sample for [SliverAppBar].
 
@@ -28,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-           SliverAppBar(
+          SliverAppBar(
             snap: true,
             floating: true,
             expandedHeight: 20.0,
@@ -36,9 +37,33 @@ class _MainScreenState extends State<MainScreen> {
             centerTitle: false,
             title: Row(
               children: [
-                Image.asset('asset/youtube_logo.jpeg', width: 90,)
+                Image.asset('asset/youtube_logo.jpeg', width: 90),
               ],
             ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(left: 7, right: 7),
+                child: Image.asset(
+                  'asset/screen.png',
+                  width: 25,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 7, right: 7),
+                child: Icon(Icons.search),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 7, right: 7),
+                child: Icon(CupertinoIcons.bell),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 7, right: 7),
+                child: CircleAvatar(
+                  radius: 15,
+                  backgroundImage: AssetImage('asset/profile_image.png'),
+                ),
+              )
+            ],
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
