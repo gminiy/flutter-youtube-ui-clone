@@ -24,8 +24,43 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<String> _categories = [
+    '전체',
+    '음악',
+    'Flutter',
+    '생존코딩',
+    '엔터테인먼트',
+    '믹스',
+    '실시간',
+    '뉴스',
+    '반려동물',
+    '감상한 동영상',
+    '새로운 맞춤 동영상'
+  ];
+
   @override
   Widget build(BuildContext context) {
+    Card _generateCard(String title) {
+      return Card(
+        color: Colors.white12,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -41,30 +76,15 @@ class _MainScreenState extends State<MainScreen> {
               ],
             ),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(30),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: const [
-                  Card(
-                    color: Colors.white12,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            '음악',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+              preferredSize: const Size.fromHeight(30),
+              child: SizedBox(
+                height: 40,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: _categories
+                      .map((category) => _generateCard(category))
+                      .toList(),
+                ),
               ),
             ),
             actions: [
