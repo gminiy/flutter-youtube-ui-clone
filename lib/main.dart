@@ -64,58 +64,61 @@ class _MainScreenState extends State<MainScreen> {
     }
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            snap: true,
-            floating: true,
-            backgroundColor: Colors.black,
-            centerTitle: false,
-            expandedHeight: 44,
-            title: Row(
-              children: [
-                Image.asset('asset/youtube_logo.jpeg', width: 110),
+      body: Container(
+        color: Colors.black,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              snap: true,
+              floating: true,
+              backgroundColor: Colors.black,
+              centerTitle: false,
+              expandedHeight: 44,
+              title: Row(
+                children: [
+                  Image.asset('asset/youtube_logo.jpeg', width: 110),
+                ],
+              ),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(30),
+                child: SizedBox(
+                  height: 40,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: _categories
+                        .map((category) => generateCard(category))
+                        .toList(),
+                  ),
+                ),
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 7, right: 7),
+                  child: Image.asset(
+                    'asset/screen.png',
+                    width: 25,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 7, right: 7),
+                  child: Icon(Icons.search),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 7, right: 7),
+                  child: Icon(CupertinoIcons.bell),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 7, right: 7),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundImage: AssetImage('asset/profile_image.png'),
+                  ),
+                )
               ],
             ),
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(30),
-              child: SizedBox(
-                height: 40,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: _categories
-                      .map((category) => generateCard(category))
-                      .toList(),
-                ),
-              ),
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(left: 7, right: 7),
-                child: Image.asset(
-                  'asset/screen.png',
-                  width: 25,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 7, right: 7),
-                child: Icon(Icons.search),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 7, right: 7),
-                child: Icon(CupertinoIcons.bell),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 7, right: 7),
-                child: CircleAvatar(
-                  radius: 15,
-                  backgroundImage: AssetImage('asset/profile_image.png'),
-                ),
-              )
-            ],
-          ),
-          HomeScreen(),
-        ],
+            HomeScreen(),
+          ],
+        ),
       ),
     );
   }
