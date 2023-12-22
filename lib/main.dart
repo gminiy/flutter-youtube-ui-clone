@@ -32,13 +32,40 @@ class _MainScreenState extends State<MainScreen> {
           SliverAppBar(
             snap: true,
             floating: true,
-            expandedHeight: 20.0,
             backgroundColor: Colors.black,
             centerTitle: false,
+            expandedHeight: 44,
             title: Row(
               children: [
-                Image.asset('asset/youtube_logo.jpeg', width: 90),
+                Image.asset('asset/youtube_logo.jpeg', width: 110),
               ],
+            ),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(30),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  Card(
+                    color: Colors.white12,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 6, horizontal: 14),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            '음악',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             actions: [
               Padding(
