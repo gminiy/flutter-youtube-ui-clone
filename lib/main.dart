@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_youtube_ui_clone/common_widget/home/video.dart';
+import 'package:flutter_youtube_ui_clone/home_screen.dart';
 
 /// Flutter code sample for [SliverAppBar].
 
@@ -112,19 +114,7 @@ class _MainScreenState extends State<MainScreen> {
               )
             ],
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  color: Colors.lightBlue[100 * (index % 9)],
-                  height: 100.0,
-                  child: Text('list item $index'),
-                );
-              },
-              childCount: 20,
-            ),
-          ),
+          HomeScreen(),
         ],
       ),
     );
