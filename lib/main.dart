@@ -24,7 +24,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<String> _categories = [
+  final List<String> _categories = [
     '전체',
     '음악',
     'Flutter',
@@ -40,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Card _generateCard(String title) {
+    Card generateCard(String title) {
       return Card(
         color: Colors.white12,
         child: Padding(
@@ -82,7 +82,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: _categories
-                      .map((category) => _generateCard(category))
+                      .map((category) => generateCard(category))
                       .toList(),
                 ),
               ),
